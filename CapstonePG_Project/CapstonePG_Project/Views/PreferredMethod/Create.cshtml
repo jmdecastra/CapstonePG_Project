@@ -1,0 +1,61 @@
+﻿@model CapstonePG_Project.Models.PreferredMethod
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="hero-unit" align="center">
+<h2>Add New Preferred Method</h2>
+<br /><br />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+           
+           <b>Preferred Method Name:</b>
+            @Html.EditorFor(model => model.prefMethName)
+            @Html.ValidationMessageFor(model => model.prefMethName)
+            
+            <b>Preferred Method ID:</b>
+
+           @* <!-- @(Model.prefMethID = ViewBag.uniqueID) -->
+            <!-- @Html.DisplayFor(model => model.prefMethID) -->*@
+
+            @Html.EditorFor(model => model.prefMethID)
+            @Html.ValidationMessageFor(model => model.prefMethID)
+            
+            <b>Warehouse:</b>
+            @Html.DropDownList("whID", String.Empty)
+            @Html.ValidationMessageFor(model => model.whID)
+            <br />
+            
+            <b>Preferred Method Description:</b>
+            @Html.EditorFor(model => model.prefMethDesc)
+            @Html.ValidationMessageFor(model => model.prefMethDesc)
+            
+            <br /><br />
+            
+
+        <br />
+        <br />
+        <br />
+
+        <p>
+            <input class="btn btn-large btn-primary" type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

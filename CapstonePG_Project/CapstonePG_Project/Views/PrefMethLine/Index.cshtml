@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CapstonePG_Project.Models.PrefMethLine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PreferredMethod.whID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prefMethLineDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prefMethLineSequence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prefMethLineParent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreferredMethod.whID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prefMethLineDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prefMethLineSequence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prefMethLineParent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.prefMethLineID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prefMethLineID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prefMethLineID })
+        </td>
+    </tr>
+}
+
+</table>

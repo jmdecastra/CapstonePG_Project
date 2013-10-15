@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -182,15 +184,78 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllObservationsController.cs" />
+    <Compile Include="Controllers\CompleteObservationController.cs" />
+    <Compile Include="Controllers\ELSTController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MachineTimingsController.cs" />
+    <Compile Include="Controllers\PreferredMethodController.cs" />
+    <Compile Include="Controllers\PrefMethLineController.cs" />
+    <Compile Include="Controllers\ToolkitController.cs" />
+    <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CycleFrequency.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MachineTiming.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObservationAssignment.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObservationSheet.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObservationTransaction.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PGDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PGDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PGDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PreferredMethod.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrefMethLine.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Warehouse.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WarehouseMethod.cs">
+      <DependentUpon>PGDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrapflatly.css" />
+    <Content Include="Content\bootstrap\css\bootstraporiginal.css" />
+    <Content Include="Content\bootstrap\css\bootstraporiginal.min.css" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\bootstrap\js\bootstrap-modal.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\lightbox.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -247,6 +312,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\PGDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PGDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PGDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PGDatabase.edmx</DependentUpon>
+      <LastGenOutput>PGDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PGDatabase.edmx.diagram">
+      <DependentUpon>PGDatabase.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PGDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PGDatabase.edmx</DependentUpon>
+      <LastGenOutput>PGDatabase.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -261,6 +343,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\lightbox-2.6.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -294,19 +377,45 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\MachineTimings\Index.cshtml" />
+    <Content Include="Views\MachineTimings\Details.cshtml" />
+    <Content Include="Views\MachineTimings\Create.cshtml" />
+    <Content Include="Views\MachineTimings\Edit.cshtml" />
+    <Content Include="Views\MachineTimings\Delete.cshtml" />
+    <Content Include="Views\PreferredMethod\Index.cshtml" />
+    <Content Include="Views\PreferredMethod\Details.cshtml" />
+    <Content Include="Views\PreferredMethod\Create.cshtml" />
+    <Content Include="Views\PreferredMethod\Edit.cshtml" />
+    <Content Include="Views\PreferredMethod\Delete.cshtml" />
+    <Content Include="Views\PrefMethLine\Index.cshtml" />
+    <Content Include="Views\PrefMethLine\Details.cshtml" />
+    <Content Include="Views\PrefMethLine\Create.cshtml" />
+    <Content Include="Views\PrefMethLine\Edit.cshtml" />
+    <Content Include="Views\PrefMethLine\Delete.cshtml" />
+    <Content Include="Views\Warehouse\Index.cshtml" />
+    <Content Include="Views\Warehouse\Details.cshtml" />
+    <Content Include="Views\Warehouse\Create.cshtml" />
+    <Content Include="Views\Warehouse\Edit.cshtml" />
+    <Content Include="Views\Warehouse\Delete.cshtml" />
+    <Content Include="Views\ELST\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutOriginal.cshtml" />
+    <Content Include="Views\Toolkit\ChooseToolkit.cshtml" />
+    <Content Include="Views\CompleteObservation\Index.cshtml" />
+    <Content Include="Views\AllObservations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,78 @@
+﻿@model CapstonePG_Project.Models.MachineTiming
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>MachineTiming</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Warehouse.whName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Warehouse.whName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtMachineType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtMachineType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myStartAt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myStartAt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myEndAt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myEndAt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtDistance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtDistance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtStartTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtStartTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myEndTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myEndTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myDuration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myDuration)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CapstonePG_Project.Models.Warehouse>
+
+@{
+    ViewBag.Title = "All Warehouses";
+}
+
+<div class="hero-unit" align="center">
+<h2>All Warehouses</h2>
+
+
+<p>
+    @Html.ActionLink("Add New Warehouse", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.whID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whUpperLeftX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whUpperLeftY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whLowerRightX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whLowerRightY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whAisleIDLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whBayIDLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whPostIDLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.whNamingOrder)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.whID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whUpperLeftX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whUpperLeftY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whLowerRightX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whLowerRightY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whAisleIDLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whBayIDLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whPostIDLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.whNamingOrder)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

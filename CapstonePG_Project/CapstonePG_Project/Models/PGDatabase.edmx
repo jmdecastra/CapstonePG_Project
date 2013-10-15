@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PGDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="PGDatabaseModelStoreContainer">
+          <EntitySet Name="CycleFrequency" EntityType="PGDatabaseModel.Store.CycleFrequency" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MachineTiming" EntityType="PGDatabaseModel.Store.MachineTiming" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ObservationAssignment" EntityType="PGDatabaseModel.Store.ObservationAssignment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ObservationSheet" EntityType="PGDatabaseModel.Store.ObservationSheet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ObservationTransaction" EntityType="PGDatabaseModel.Store.ObservationTransaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PreferredMethod" EntityType="PGDatabaseModel.Store.PreferredMethod" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PrefMethLine" EntityType="PGDatabaseModel.Store.PrefMethLine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Warehouse" EntityType="PGDatabaseModel.Store.Warehouse" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WarehouseMethod" EntityType="PGDatabaseModel.Store.WarehouseMethod" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fkobsAssignmentID" Association="PGDatabaseModel.Store.fkobsAssignmentID">
+            <End Role="ObservationAssignment" EntitySet="ObservationAssignment" />
+            <End Role="CycleFrequency" EntitySet="CycleFrequency" />
+          </AssociationSet>
+          <AssociationSet Name="fkobservationID" Association="PGDatabaseModel.Store.fkobservationID">
+            <End Role="ObservationSheet" EntitySet="ObservationSheet" />
+            <End Role="ObservationAssignment" EntitySet="ObservationAssignment" />
+          </AssociationSet>
+          <AssociationSet Name="fkObservationSheetprefMethID" Association="PGDatabaseModel.Store.fkObservationSheetprefMethID">
+            <End Role="PreferredMethod" EntitySet="PreferredMethod" />
+            <End Role="ObservationSheet" EntitySet="ObservationSheet" />
+          </AssociationSet>
+          <AssociationSet Name="fkObservationSheetwhID" Association="PGDatabaseModel.Store.fkObservationSheetwhID">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ObservationSheet" EntitySet="ObservationSheet" />
+          </AssociationSet>
+          <AssociationSet Name="fkobservationTransactionID" Association="PGDatabaseModel.Store.fkobservationTransactionID">
+            <End Role="ObservationSheet" EntitySet="ObservationSheet" />
+            <End Role="ObservationTransaction" EntitySet="ObservationTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="fkprefeMethID" Association="PGDatabaseModel.Store.fkprefeMethID">
+            <End Role="PreferredMethod" EntitySet="PreferredMethod" />
+            <End Role="WarehouseMethod" EntitySet="WarehouseMethod" />
+          </AssociationSet>
+          <AssociationSet Name="fkpreferredMeth" Association="PGDatabaseModel.Store.fkpreferredMeth">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="PreferredMethod" EntitySet="PreferredMethod" />
+          </AssociationSet>
+          <AssociationSet Name="fkpreferredMethod" Association="PGDatabaseModel.Store.fkpreferredMethod">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WarehouseMethod" EntitySet="WarehouseMethod" />
+          </AssociationSet>
+          <AssociationSet Name="fkprefMethID" Association="PGDatabaseModel.Store.fkprefMethID">
+            <End Role="PreferredMethod" EntitySet="PreferredMethod" />
+            <End Role="PrefMethLine" EntitySet="PrefMethLine" />
+          </AssociationSet>
+          <AssociationSet Name="fkwarehhouseID" Association="PGDatabaseModel.Store.fkwarehhouseID">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="MachineTiming" EntitySet="MachineTiming" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CycleFrequency">
+          <Key>
+            <PropertyRef Name="cycleNumber" />
+          </Key>
+          <Property Name="cycleFrequencyID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="obsAssignmentID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="cycleNumber" Type="int" Nullable="false" />
+          <Property Name="cycleFrequencyCount" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="MachineTiming">
+          <Key>
+            <PropertyRef Name="mtID" />
+          </Key>
+          <Property Name="mtID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="mtMachineType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="myStartAt" Type="date" />
+          <Property Name="myEndAt" Type="date" />
+          <Property Name="mtDistance" Type="int" />
+          <Property Name="mtStartTime" Type="date" />
+          <Property Name="myEndTime" Type="date" />
+          <Property Name="myDuration" Type="date" />
+        </EntityType>
+        <EntityType Name="ObservationAssignment">
+          <Key>
+            <PropertyRef Name="obsAssignmentID" />
+          </Key>
+          <Property Name="obsAssignmentID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="observationSheetID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="obsAssignmentDesc" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="assignmentTime" Type="date" Nullable="false" />
+          <Property Name="obsAssignmentSeq" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ObservationSheet">
+          <Key>
+            <PropertyRef Name="observationSheetID" />
+          </Key>
+          <Property Name="observationSheetID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="observationSheetName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="observatuonSheetDesc" Type="varchar" MaxLength="20" />
+          <Property Name="warningFlag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ObservationTransaction">
+          <Key>
+            <PropertyRef Name="observationTransID" />
+          </Key>
+          <Property Name="observationTransID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="observationSheetID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="observationTransDesc" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PreferredMethod">
+          <Key>
+            <PropertyRef Name="prefMethID" />
+          </Key>
+          <Property Name="prefMethID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethDesc" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PrefMethLine">
+          <Key>
+            <PropertyRef Name="prefMethLineID" />
+          </Key>
+          <Property Name="prefMethLineID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethLineDesc" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethLineSequence" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethLineParent" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="whID" />
+          </Key>
+          <Property Name="whID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whUpperLeftX" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whUpperLeftY" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whLowerRightX" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whLowerRightY" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whAisleIDLength" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whBayIDLength" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whPostIDLength" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whNamingOrder" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WarehouseMethod">
+          <Key>
+            <PropertyRef Name="wareMethID" />
+          </Key>
+          <Property Name="wareMethID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="whID" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="prefMethID" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <Association Name="fkobsAssignmentID">
+          <End Role="ObservationAssignment" Type="PGDatabaseModel.Store.ObservationAssignment" Multiplicity="1" />
+          <End Role="CycleFrequency" Type="PGDatabaseModel.Store.CycleFrequency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObservationAssignment">
+              <PropertyRef Name="obsAssignmentID" />
+            </Principal>
+            <Dependent Role="CycleFrequency">
+              <PropertyRef Name="obsAssignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkobservationID">
+          <End Role="ObservationSheet" Type="PGDatabaseModel.Store.ObservationSheet" Multiplicity="1" />
+          <End Role="ObservationAssignment" Type="PGDatabaseModel.Store.ObservationAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObservationSheet">
+              <PropertyRef Name="observationSheetID" />
+            </Principal>
+            <Dependent Role="ObservationAssignment">
+              <PropertyRef Name="observationSheetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkObservationSheetprefMethID">
+          <End Role="PreferredMethod" Type="PGDatabaseModel.Store.PreferredMethod" Multiplicity="1" />
+          <End Role="ObservationSheet" Type="PGDatabaseModel.Store.ObservationSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredMethod">
+              <PropertyRef Name="prefMethID" />
+            </Principal>
+            <Dependent Role="ObservationSheet">
+              <PropertyRef Name="prefMethID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkObservationSheetwhID">
+          <End Role="Warehouse" Type="PGDatabaseModel.Store.Warehouse" Multiplicity="1" />
+          <End Role="ObservationSheet" Type="PGDatabaseModel.Store.ObservationSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="ObservationSheet">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkobservationTransactionID">
+          <End Role="ObservationSheet" Type="PGDatabaseModel.Store.ObservationSheet" Multiplicity="1" />
+          <End Role="ObservationTransaction" Type="PGDatabaseModel.Store.ObservationTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObservationSheet">
+              <PropertyRef Name="observationSheetID" />
+            </Principal>
+            <Dependent Role="ObservationTransaction">
+              <PropertyRef Name="observationSheetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprefeMethID">
+          <End Role="PreferredMethod" Type="PGDatabaseModel.Store.PreferredMethod" Multiplicity="1" />
+          <End Role="WarehouseMethod" Type="PGDatabaseModel.Store.WarehouseMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredMethod">
+              <PropertyRef Name="prefMethID" />
+            </Principal>
+            <Dependent Role="WarehouseMethod">
+              <PropertyRef Name="prefMethID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpreferredMeth">
+          <End Role="Warehouse" Type="PGDatabaseModel.Store.Warehouse" Multiplicity="1" />
+          <End Role="PreferredMethod" Type="PGDatabaseModel.Store.PreferredMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="PreferredMethod">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpreferredMethod">
+          <End Role="Warehouse" Type="PGDatabaseModel.Store.Warehouse" Multiplicity="1" />
+          <End Role="WarehouseMethod" Type="PGDatabaseModel.Store.WarehouseMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="WarehouseMethod">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprefMethID">
+          <End Role="PreferredMethod" Type="PGDatabaseModel.Store.PreferredMethod" Multiplicity="1" />
+          <End Role="PrefMethLine" Type="PGDatabaseModel.Store.PrefMethLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredMethod">
+              <PropertyRef Name="prefMethID" />
+            </Principal>
+            <Dependent Role="PrefMethLine">
+              <PropertyRef Name="prefMethID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkwarehhouseID">
+          <End Role="Warehouse" Type="PGDatabaseModel.Store.Warehouse" Multiplicity="1" />
+          <End Role="MachineTiming" Type="PGDatabaseModel.Store.MachineTiming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="MachineTiming">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PGDatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PGDatabase" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CycleFrequencies" EntityType="PGDatabaseModel.CycleFrequency" />
+          <EntitySet Name="MachineTimings" EntityType="PGDatabaseModel.MachineTiming" />
+          <EntitySet Name="ObservationAssignments" EntityType="PGDatabaseModel.ObservationAssignment" />
+          <EntitySet Name="ObservationSheets" EntityType="PGDatabaseModel.ObservationSheet" />
+          <EntitySet Name="ObservationTransactions" EntityType="PGDatabaseModel.ObservationTransaction" />
+          <EntitySet Name="PreferredMethods" EntityType="PGDatabaseModel.PreferredMethod" />
+          <EntitySet Name="PrefMethLines" EntityType="PGDatabaseModel.PrefMethLine" />
+          <EntitySet Name="Warehouses" EntityType="PGDatabaseModel.Warehouse" />
+          <EntitySet Name="WarehouseMethods" EntityType="PGDatabaseModel.WarehouseMethod" />
+          <AssociationSet Name="fkobsAssignmentID" Association="PGDatabaseModel.fkobsAssignmentID">
+            <End Role="ObservationAssignment" EntitySet="ObservationAssignments" />
+            <End Role="CycleFrequency" EntitySet="CycleFrequencies" />
+          </AssociationSet>
+          <AssociationSet Name="fkwarehhouseID" Association="PGDatabaseModel.fkwarehhouseID">
+            <End Role="Warehouse" EntitySet="Warehouses" />
+            <End Role="MachineTiming" EntitySet="MachineTimings" />
+          </AssociationSet>
+          <AssociationSet Name="fkobservationID" Association="PGDatabaseModel.fkobservationID">
+            <End Role="ObservationSheet" EntitySet="ObservationSheets" />
+            <End Role="ObservationAssignment" EntitySet="ObservationAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="fkObservationSheetprefMethID" Association="PGDatabaseModel.fkObservationSheetprefMethID">
+            <End Role="PreferredMethod" EntitySet="PreferredMethods" />
+            <End Role="ObservationSheet" EntitySet="ObservationSheets" />
+          </AssociationSet>
+          <AssociationSet Name="fkObservationSheetwhID" Association="PGDatabaseModel.fkObservationSheetwhID">
+            <End Role="Warehouse" EntitySet="Warehouses" />
+            <End Role="ObservationSheet" EntitySet="ObservationSheets" />
+          </AssociationSet>
+          <AssociationSet Name="fkobservationTransactionID" Association="PGDatabaseModel.fkobservationTransactionID">
+            <End Role="ObservationSheet" EntitySet="ObservationSheets" />
+            <End Role="ObservationTransaction" EntitySet="ObservationTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="fkprefeMethID" Association="PGDatabaseModel.fkprefeMethID">
+            <End Role="PreferredMethod" EntitySet="PreferredMethods" />
+            <End Role="WarehouseMethod" EntitySet="WarehouseMethods" />
+          </AssociationSet>
+          <AssociationSet Name="fkpreferredMeth" Association="PGDatabaseModel.fkpreferredMeth">
+            <End Role="Warehouse" EntitySet="Warehouses" />
+            <End Role="PreferredMethod" EntitySet="PreferredMethods" />
+          </AssociationSet>
+          <AssociationSet Name="fkprefMethID" Association="PGDatabaseModel.fkprefMethID">
+            <End Role="PreferredMethod" EntitySet="PreferredMethods" />
+            <End Role="PrefMethLine" EntitySet="PrefMethLines" />
+          </AssociationSet>
+          <AssociationSet Name="fkpreferredMethod" Association="PGDatabaseModel.fkpreferredMethod">
+            <End Role="Warehouse" EntitySet="Warehouses" />
+            <End Role="WarehouseMethod" EntitySet="WarehouseMethods" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CycleFrequency">
+          <Key>
+            <PropertyRef Name="cycleNumber" />
+          </Key>
+          <Property Name="cycleFrequencyID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="obsAssignmentID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="cycleNumber" Type="Int32" Nullable="false" />
+          <Property Name="cycleFrequencyCount" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ObservationAssignment" Relationship="PGDatabaseModel.fkobsAssignmentID" FromRole="CycleFrequency" ToRole="ObservationAssignment" />
+        </EntityType>
+        <EntityType Name="MachineTiming">
+          <Key>
+            <PropertyRef Name="mtID" />
+          </Key>
+          <Property Name="mtID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="mtMachineType" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="myStartAt" Type="DateTime" Precision="0" />
+          <Property Name="myEndAt" Type="DateTime" Precision="0" />
+          <Property Name="mtDistance" Type="Int32" />
+          <Property Name="mtStartTime" Type="DateTime" Precision="0" />
+          <Property Name="myEndTime" Type="DateTime" Precision="0" />
+          <Property Name="myDuration" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Warehouse" Relationship="PGDatabaseModel.fkwarehhouseID" FromRole="MachineTiming" ToRole="Warehouse" />
+        </EntityType>
+        <EntityType Name="ObservationAssignment">
+          <Key>
+            <PropertyRef Name="obsAssignmentID" />
+          </Key>
+          <Property Name="obsAssignmentID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="observationSheetID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="obsAssignmentDesc" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="assignmentTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="obsAssignmentSeq" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CycleFrequencies" Relationship="PGDatabaseModel.fkobsAssignmentID" FromRole="ObservationAssignment" ToRole="CycleFrequency" />
+          <NavigationProperty Name="ObservationSheet" Relationship="PGDatabaseModel.fkobservationID" FromRole="ObservationAssignment" ToRole="ObservationSheet" />
+        </EntityType>
+        <EntityType Name="ObservationSheet">
+          <Key>
+            <PropertyRef Name="observationSheetID" />
+          </Key>
+          <Property Name="observationSheetID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="observationSheetName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="observatuonSheetDesc" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="warningFlag" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ObservationAssignments" Relationship="PGDatabaseModel.fkobservationID" FromRole="ObservationSheet" ToRole="ObservationAssignment" />
+          <NavigationProperty Name="PreferredMethod" Relationship="PGDatabaseModel.fkObservationSheetprefMethID" FromRole="ObservationSheet" ToRole="PreferredMethod" />
+          <NavigationProperty Name="Warehouse" Relationship="PGDatabaseModel.fkObservationSheetwhID" FromRole="ObservationSheet" ToRole="Warehouse" />
+          <NavigationProperty Name="ObservationTransactions" Relationship="PGDatabaseModel.fkobservationTransactionID" FromRole="ObservationSheet" ToRole="ObservationTransaction" />
+        </EntityType>
+        <EntityType Name="ObservationTransaction">
+          <Key>
+            <PropertyRef Name="observationTransID" />
+          </Key>
+          <Property Name="observationTransID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="observationSheetID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="observationTransDesc" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ObservationSheet" Relationship="PGDatabaseModel.fkobservationTransactionID" FromRole="ObservationTransaction" ToRole="ObservationSheet" />
+        </EntityType>
+        <EntityType Name="PreferredMethod">
+          <Key>
+            <PropertyRef Name="prefMethID" />
+          </Key>
+          <Property Name="prefMethID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethDesc" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ObservationSheets" Relationship="PGDatabaseModel.fkObservationSheetprefMethID" FromRole="PreferredMethod" ToRole="ObservationSheet" />
+          <NavigationProperty Name="WarehouseMethods" Relationship="PGDatabaseModel.fkprefeMethID" FromRole="PreferredMethod" ToRole="WarehouseMethod" />
+          <NavigationProperty Name="Warehouse" Relationship="PGDatabaseModel.fkpreferredMeth" FromRole="PreferredMethod" ToRole="Warehouse" />
+          <NavigationProperty Name="PrefMethLines" Relationship="PGDatabaseModel.fkprefMethID" FromRole="PreferredMethod" ToRole="PrefMethLine" />
+        </EntityType>
+        <EntityType Name="PrefMethLine">
+          <Key>
+            <PropertyRef Name="prefMethLineID" />
+          </Key>
+          <Property Name="prefMethLineID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethLineDesc" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethLineSequence" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethLineParent" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PreferredMethod" Relationship="PGDatabaseModel.fkprefMethID" FromRole="PrefMethLine" ToRole="PreferredMethod" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="whID" />
+          </Key>
+          <Property Name="whID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whUpperLeftX" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whUpperLeftY" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whLowerRightX" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whLowerRightY" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whAisleIDLength" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whBayIDLength" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whPostIDLength" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whNamingOrder" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="MachineTimings" Relationship="PGDatabaseModel.fkwarehhouseID" FromRole="Warehouse" ToRole="MachineTiming" />
+          <NavigationProperty Name="ObservationSheets" Relationship="PGDatabaseModel.fkObservationSheetwhID" FromRole="Warehouse" ToRole="ObservationSheet" />
+          <NavigationProperty Name="PreferredMethods" Relationship="PGDatabaseModel.fkpreferredMeth" FromRole="Warehouse" ToRole="PreferredMethod" />
+          <NavigationProperty Name="WarehouseMethods" Relationship="PGDatabaseModel.fkpreferredMethod" FromRole="Warehouse" ToRole="WarehouseMethod" />
+        </EntityType>
+        <EntityType Name="WarehouseMethod">
+          <Key>
+            <PropertyRef Name="wareMethID" />
+          </Key>
+          <Property Name="wareMethID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="whID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="prefMethID" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PreferredMethod" Relationship="PGDatabaseModel.fkprefeMethID" FromRole="WarehouseMethod" ToRole="PreferredMethod" />
+          <NavigationProperty Name="Warehouse" Relationship="PGDatabaseModel.fkpreferredMethod" FromRole="WarehouseMethod" ToRole="Warehouse" />
+        </EntityType>
+        <Association Name="fkobsAssignmentID">
+          <End Role="ObservationAssignment" Type="PGDatabaseModel.ObservationAssignment" Multiplicity="1" />
+          <End Role="CycleFrequency" Type="PGDatabaseModel.CycleFrequency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObservationAssignment">
+              <PropertyRef Name="obsAssignmentID" />
+            </Principal>
+            <Dependent Role="CycleFrequency">
+              <PropertyRef Name="obsAssignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkwarehhouseID">
+          <End Role="Warehouse" Type="PGDatabaseModel.Warehouse" Multiplicity="1" />
+          <End Role="MachineTiming" Type="PGDatabaseModel.MachineTiming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="MachineTiming">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkobservationID">
+          <End Role="ObservationSheet" Type="PGDatabaseModel.ObservationSheet" Multiplicity="1" />
+          <End Role="ObservationAssignment" Type="PGDatabaseModel.ObservationAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObservationSheet">
+              <PropertyRef Name="observationSheetID" />
+            </Principal>
+            <Dependent Role="ObservationAssignment">
+              <PropertyRef Name="observationSheetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkObservationSheetprefMethID">
+          <End Role="PreferredMethod" Type="PGDatabaseModel.PreferredMethod" Multiplicity="1" />
+          <End Role="ObservationSheet" Type="PGDatabaseModel.ObservationSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredMethod">
+              <PropertyRef Name="prefMethID" />
+            </Principal>
+            <Dependent Role="ObservationSheet">
+              <PropertyRef Name="prefMethID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkObservationSheetwhID">
+          <End Role="Warehouse" Type="PGDatabaseModel.Warehouse" Multiplicity="1" />
+          <End Role="ObservationSheet" Type="PGDatabaseModel.ObservationSheet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="ObservationSheet">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkobservationTransactionID">
+          <End Role="ObservationSheet" Type="PGDatabaseModel.ObservationSheet" Multiplicity="1" />
+          <End Role="ObservationTransaction" Type="PGDatabaseModel.ObservationTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ObservationSheet">
+              <PropertyRef Name="observationSheetID" />
+            </Principal>
+            <Dependent Role="ObservationTransaction">
+              <PropertyRef Name="observationSheetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprefeMethID">
+          <End Role="PreferredMethod" Type="PGDatabaseModel.PreferredMethod" Multiplicity="1" />
+          <End Role="WarehouseMethod" Type="PGDatabaseModel.WarehouseMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredMethod">
+              <PropertyRef Name="prefMethID" />
+            </Principal>
+            <Dependent Role="WarehouseMethod">
+              <PropertyRef Name="prefMethID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpreferredMeth">
+          <End Role="Warehouse" Type="PGDatabaseModel.Warehouse" Multiplicity="1" />
+          <End Role="PreferredMethod" Type="PGDatabaseModel.PreferredMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="PreferredMethod">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprefMethID">
+          <End Role="PreferredMethod" Type="PGDatabaseModel.PreferredMethod" Multiplicity="1" />
+          <End Role="PrefMethLine" Type="PGDatabaseModel.PrefMethLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredMethod">
+              <PropertyRef Name="prefMethID" />
+            </Principal>
+            <Dependent Role="PrefMethLine">
+              <PropertyRef Name="prefMethID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpreferredMethod">
+          <End Role="Warehouse" Type="PGDatabaseModel.Warehouse" Multiplicity="1" />
+          <End Role="WarehouseMethod" Type="PGDatabaseModel.WarehouseMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="whID" />
+            </Principal>
+            <Dependent Role="WarehouseMethod">
+              <PropertyRef Name="whID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PGDatabaseModelStoreContainer" CdmEntityContainer="PGDatabase">
+          <EntitySetMapping Name="CycleFrequencies">
+            <EntityTypeMapping TypeName="PGDatabaseModel.CycleFrequency">
+              <MappingFragment StoreEntitySet="CycleFrequency">
+                <ScalarProperty Name="cycleFrequencyID" ColumnName="cycleFrequencyID" />
+                <ScalarProperty Name="obsAssignmentID" ColumnName="obsAssignmentID" />
+                <ScalarProperty Name="cycleNumber" ColumnName="cycleNumber" />
+                <ScalarProperty Name="cycleFrequencyCount" ColumnName="cycleFrequencyCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MachineTimings">
+            <EntityTypeMapping TypeName="PGDatabaseModel.MachineTiming">
+              <MappingFragment StoreEntitySet="MachineTiming">
+                <ScalarProperty Name="mtID" ColumnName="mtID" />
+                <ScalarProperty Name="whID" ColumnName="whID" />
+                <ScalarProperty Name="mtMachineType" ColumnName="mtMachineType" />
+                <ScalarProperty Name="myStartAt" ColumnName="myStartAt" />
+                <ScalarProperty Name="myEndAt" ColumnName="myEndAt" />
+                <ScalarProperty Name="mtDistance" ColumnName="mtDistance" />
+                <ScalarProperty Name="mtStartTime" ColumnName="mtStartTime" />
+                <ScalarProperty Name="myEndTime" ColumnName="myEndTime" />
+                <ScalarProperty Name="myDuration" ColumnName="myDuration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObservationAssignments">
+            <EntityTypeMapping TypeName="PGDatabaseModel.ObservationAssignment">
+              <MappingFragment StoreEntitySet="ObservationAssignment">
+                <ScalarProperty Name="obsAssignmentID" ColumnName="obsAssignmentID" />
+                <ScalarProperty Name="observationSheetID" ColumnName="observationSheetID" />
+                <ScalarProperty Name="obsAssignmentDesc" ColumnName="obsAssignmentDesc" />
+                <ScalarProperty Name="assignmentTime" ColumnName="assignmentTime" />
+                <ScalarProperty Name="obsAssignmentSeq" ColumnName="obsAssignmentSeq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObservationSheets">
+            <EntityTypeMapping TypeName="PGDatabaseModel.ObservationSheet">
+              <MappingFragment StoreEntitySet="ObservationSheet">
+                <ScalarProperty Name="observationSheetID" ColumnName="observationSheetID" />
+                <ScalarProperty Name="whID" ColumnName="whID" />
+                <ScalarProperty Name="prefMethID" ColumnName="prefMethID" />
+                <ScalarProperty Name="observationSheetName" ColumnName="observationSheetName" />
+                <ScalarProperty Name="observatuonSheetDesc" ColumnName="observatuonSheetDesc" />
+                <ScalarProperty Name="warningFlag" ColumnName="warningFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObservationTransactions">
+            <EntityTypeMapping TypeName="PGDatabaseModel.ObservationTransaction">
+              <MappingFragment StoreEntitySet="ObservationTransaction">
+                <ScalarProperty Name="observationTransID" ColumnName="observationTransID" />
+                <ScalarProperty Name="observationSheetID" ColumnName="observationSheetID" />
+                <ScalarProperty Name="observationTransDesc" ColumnName="observationTransDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferredMethods">
+            <EntityTypeMapping TypeName="PGDatabaseModel.PreferredMethod">
+              <MappingFragment StoreEntitySet="PreferredMethod">
+                <ScalarProperty Name="prefMethID" ColumnName="prefMethID" />
+                <ScalarProperty Name="whID" ColumnName="whID" />
+                <ScalarProperty Name="prefMethName" ColumnName="prefMethName" />
+                <ScalarProperty Name="prefMethDesc" ColumnName="prefMethDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrefMethLines">
+            <EntityTypeMapping TypeName="PGDatabaseModel.PrefMethLine">
+              <MappingFragment StoreEntitySet="PrefMethLine">
+                <ScalarProperty Name="prefMethLineID" ColumnName="prefMethLineID" />
+                <ScalarProperty Name="prefMethID" ColumnName="prefMethID" />
+                <ScalarProperty Name="prefMethLineDesc" ColumnName="prefMethLineDesc" />
+                <ScalarProperty Name="prefMethLineSequence" ColumnName="prefMethLineSequence" />
+                <ScalarProperty Name="prefMethLineParent" ColumnName="prefMethLineParent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouses">
+            <EntityTypeMapping TypeName="PGDatabaseModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="whID" ColumnName="whID" />
+                <ScalarProperty Name="whName" ColumnName="whName" />
+                <ScalarProperty Name="whUpperLeftX" ColumnName="whUpperLeftX" />
+                <ScalarProperty Name="whUpperLeftY" ColumnName="whUpperLeftY" />
+                <ScalarProperty Name="whLowerRightX" ColumnName="whLowerRightX" />
+                <ScalarProperty Name="whLowerRightY" ColumnName="whLowerRightY" />
+                <ScalarProperty Name="whAisleIDLength" ColumnName="whAisleIDLength" />
+                <ScalarProperty Name="whBayIDLength" ColumnName="whBayIDLength" />
+                <ScalarProperty Name="whPostIDLength" ColumnName="whPostIDLength" />
+                <ScalarProperty Name="whNamingOrder" ColumnName="whNamingOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WarehouseMethods">
+            <EntityTypeMapping TypeName="PGDatabaseModel.WarehouseMethod">
+              <MappingFragment StoreEntitySet="WarehouseMethod">
+                <ScalarProperty Name="wareMethID" ColumnName="wareMethID" />
+                <ScalarProperty Name="whID" ColumnName="whID" />
+                <ScalarProperty Name="prefMethID" ColumnName="prefMethID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

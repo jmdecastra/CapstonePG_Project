@@ -1,0 +1,82 @@
+﻿@model CapstonePG_Project.Models.MachineTiming
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>MachineTiming</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Warehouse.whName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Warehouse.whName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtMachineType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtMachineType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myStartAt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myStartAt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myEndAt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myEndAt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtDistance)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtDistance)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mtStartTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mtStartTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myEndTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myEndTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.myDuration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myDuration)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

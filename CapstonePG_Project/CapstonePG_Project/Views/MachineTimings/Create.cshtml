@@ -1,0 +1,100 @@
+﻿@model CapstonePG_Project.Models.MachineTiming
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>MachineTiming</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.mtID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mtID)
+            @Html.ValidationMessageFor(model => model.mtID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whID, "Warehouse")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("whID", String.Empty)
+            @Html.ValidationMessageFor(model => model.whID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.mtMachineType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mtMachineType)
+            @Html.ValidationMessageFor(model => model.mtMachineType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myStartAt)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myStartAt)
+            @Html.ValidationMessageFor(model => model.myStartAt)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myEndAt)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myEndAt)
+            @Html.ValidationMessageFor(model => model.myEndAt)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.mtDistance)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mtDistance)
+            @Html.ValidationMessageFor(model => model.mtDistance)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.mtStartTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mtStartTime)
+            @Html.ValidationMessageFor(model => model.mtStartTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myEndTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myEndTime)
+            @Html.ValidationMessageFor(model => model.myEndTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myDuration)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myDuration)
+            @Html.ValidationMessageFor(model => model.myDuration)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

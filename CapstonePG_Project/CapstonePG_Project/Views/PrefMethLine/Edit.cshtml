@@ -1,0 +1,62 @@
+﻿@model CapstonePG_Project.Models.PrefMethLine
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PrefMethLine</legend>
+
+        @Html.HiddenFor(model => model.prefMethLineID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.prefMethID, "PreferredMethod")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("prefMethID", String.Empty)
+            @Html.ValidationMessageFor(model => model.prefMethID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.prefMethLineDesc)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.prefMethLineDesc)
+            @Html.ValidationMessageFor(model => model.prefMethLineDesc)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.prefMethLineSequence)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.prefMethLineSequence)
+            @Html.ValidationMessageFor(model => model.prefMethLineSequence)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.prefMethLineParent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.prefMethLineParent)
+            @Html.ValidationMessageFor(model => model.prefMethLineParent)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="888a41c23beb4af1a29f7bc412eb8045" Name="Diagram1">
+        <EntityTypeShape EntityType="PGDatabaseModel.CycleFrequency" Width="1.5" PointX="9.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.MachineTiming" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.ObservationAssignment" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.ObservationSheet" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.ObservationTransaction" Width="1.5" PointX="7.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.PreferredMethod" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.PrefMethLine" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.Warehouse" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PGDatabaseModel.WarehouseMethod" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="PGDatabaseModel.fkobsAssignmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkwarehhouseID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkobservationID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkObservationSheetprefMethID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkObservationSheetwhID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkobservationTransactionID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkprefeMethID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkpreferredMeth" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkprefMethID" ManuallyRouted="false" />
+        <AssociationConnector Association="PGDatabaseModel.fkpreferredMethod" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

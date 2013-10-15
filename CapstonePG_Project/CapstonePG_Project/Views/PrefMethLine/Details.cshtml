@@ -1,0 +1,43 @@
+﻿@model CapstonePG_Project.Models.PrefMethLine
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PrefMethLine</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PreferredMethod.whID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PreferredMethod.whID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.prefMethLineDesc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.prefMethLineDesc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.prefMethLineSequence)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.prefMethLineSequence)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.prefMethLineParent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.prefMethLineParent)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.prefMethLineID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

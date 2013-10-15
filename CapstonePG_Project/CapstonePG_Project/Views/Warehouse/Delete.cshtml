@@ -1,0 +1,89 @@
+﻿@model CapstonePG_Project.Models.Warehouse
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Warehouse</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whUpperLeftX)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whUpperLeftX)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whUpperLeftY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whUpperLeftY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whLowerRightX)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whLowerRightX)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whLowerRightY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whLowerRightY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whAisleIDLength)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whAisleIDLength)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whBayIDLength)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whBayIDLength)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whPostIDLength)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whPostIDLength)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.whNamingOrder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.whNamingOrder)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

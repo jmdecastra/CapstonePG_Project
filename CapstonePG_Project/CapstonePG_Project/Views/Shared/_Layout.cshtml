@@ -1,48 +1,87 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
-            </div>
-        </footer>
+﻿<!-- Header information below. -->
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>P&G WFM Data Collection Toolkit</title>
+
+      <!-- Stylesheets and scripts listed below. -->
+
+      <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.css")" rel="stylesheet" type="text/css" />
+      <link href="~/Content/lightbox.css" rel="stylesheet" />
+
+      <script src="@Url.Content("~/Scripts/jquery-1.8.2.js")"></script>
+      <script src="~/Scripts/lightbox-2.6.min.js"></script>
+      <script src="~/Content/bootstrap/js/bootstrap.js"></script>
+
+</head>
+
+    <!-- End header info -->
+
+
+<body>
+
+    <!-- Navigation bar HTML below. -->
+    <div class="container" style="background-color:#ffffff;">
+       <div class="row">
+         <ul class="nav nav-pills">
+             <li><a href="/Home/Index/"><img src="http://www.stephskardal.info/wp-content/plugins/RSSPoster_PRO/cache/c0396_pg-logo.png" width="100" /></a></li>
+             <li><a href="/Home/Index/">Home</a></li>
+             <li class="dropdown">
+                <a class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    href="#">
+                    WHCT
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Load Warehouse Map</a></li>
+                     <li><a href="#">Warehouse Map Setup Data</a></li>
+                     <li><a href="#">Open Travel Areas/Obstacles</a></li>
+                     <li><a href="#">Intersection Points</a></li>
+                     <li><a href="#">Aisle Areas</a></li>
+                    <li><a href="#">Logical Aisles</a></li>
+                    <li><a href="#">Bay Types</a></li>
+                    <li><a href="#">Location Types</a></li>
+                    <li><a href="#">Export Warehouse Sheets</a></li>
+                </ul>     
+            </li>
+    
+           <li class="dropdown">
+            <a class="dropdown-toggle"
+                data-toggle="dropdown"
+                href="#">
+                ELST
+                <b class="caret"></b>
+            </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/PreferredMethod/Index/">Preferred Methods</a></li>
+                     <li><a href="/AllObservations/Index/">Completed Frequency Observations</a></li>
+                     <li><a href="/CompleteObservation/Index/">Complete an Observation</a></li>
+                     <li><a href="/MachineTiming/Index/">Machine Timing Data Sheets</a></li>
+                </ul>     
+            </li>
+             <li style="float:right;"><a href="~/Images/Picture1.png" data-lightbox="image-1" title="My caption">Click here to view warehouse map</a></li>
+</ul>
+<br />
+
+        </div>
+
+<div class="container-fluid" align="center">
+  <div class="row-fluid">
+    <div class="span4">
+       
+
+@RenderSection("scripts", required: false)
+
+    @RenderBody(
+    )
+
+    </div>
+   
+    </div>
+    </div>
+
+
+  </body>
 </html>

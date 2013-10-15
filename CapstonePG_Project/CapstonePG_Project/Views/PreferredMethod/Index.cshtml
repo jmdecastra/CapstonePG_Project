@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CapstonePG_Project.Models.PreferredMethod>
+
+@{
+    ViewBag.Title = "Preferred Methods";
+}
+
+<div class="hero-unit" align="center">
+<h2>Preferred Methods</h2>
+
+<p>
+    @Html.ActionLink("Add New Preferred Method", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Preferred Method ID
+        </th>
+        <th>
+           Warehouse Name
+        </th>
+        <th>
+           Preferred Method Name
+        </th>
+        <th>
+           Preferred Method Description
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prefMethID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Warehouse.whName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prefMethName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prefMethDesc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id=item.prefMethID}) |
+            @Html.ActionLink("Details", "Details", new {id=item.prefMethID}) |
+            @Html.ActionLink("Delete", "Delete", new {id=item.prefMethID})
+        </td>
+    </tr>
+}
+
+</table>
+
+    </div>

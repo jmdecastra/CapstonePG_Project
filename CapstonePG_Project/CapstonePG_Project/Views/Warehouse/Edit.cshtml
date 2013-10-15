@@ -1,0 +1,108 @@
+﻿@model CapstonePG_Project.Models.Warehouse
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Warehouse</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whID)
+            @Html.ValidationMessageFor(model => model.whID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whName)
+            @Html.ValidationMessageFor(model => model.whName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whUpperLeftX)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whUpperLeftX)
+            @Html.ValidationMessageFor(model => model.whUpperLeftX)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whUpperLeftY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whUpperLeftY)
+            @Html.ValidationMessageFor(model => model.whUpperLeftY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whLowerRightX)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whLowerRightX)
+            @Html.ValidationMessageFor(model => model.whLowerRightX)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whLowerRightY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whLowerRightY)
+            @Html.ValidationMessageFor(model => model.whLowerRightY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whAisleIDLength)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whAisleIDLength)
+            @Html.ValidationMessageFor(model => model.whAisleIDLength)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whBayIDLength)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whBayIDLength)
+            @Html.ValidationMessageFor(model => model.whBayIDLength)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whPostIDLength)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whPostIDLength)
+            @Html.ValidationMessageFor(model => model.whPostIDLength)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.whNamingOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.whNamingOrder)
+            @Html.ValidationMessageFor(model => model.whNamingOrder)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
