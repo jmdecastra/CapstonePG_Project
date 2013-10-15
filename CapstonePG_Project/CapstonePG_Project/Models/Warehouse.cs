@@ -16,7 +16,7 @@ namespace CapstonePG_Project.Models
     {
         public Warehouse()
         {
-            this.MachineTimings = new HashSet<MachineTiming>();
+            this.MachineTiming = new HashSet<MachineTiming>();
             this.ObservationSheets = new HashSet<ObservationSheet>();
             this.PreferredMethods = new HashSet<PreferredMethod>();
             this.WarehouseMethods = new HashSet<WarehouseMethod>();
@@ -33,7 +33,7 @@ namespace CapstonePG_Project.Models
         public string whPostIDLength { get; set; }
         public string whNamingOrder { get; set; }
     
-        public virtual ICollection<MachineTiming> MachineTimings { get; set; }
+        public virtual ICollection<MachineTiming> MachineTiming { get; set; }
         public virtual ICollection<ObservationSheet> ObservationSheets { get; set; }
         public virtual ICollection<PreferredMethod> PreferredMethods { get; set; }
         public virtual ICollection<WarehouseMethod> WarehouseMethods { get; set; }

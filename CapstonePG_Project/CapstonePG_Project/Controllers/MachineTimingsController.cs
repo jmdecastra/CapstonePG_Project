@@ -9,25 +9,25 @@ using CapstonePG_Project.Models;
 
 namespace CapstonePG_Project.Controllers
 {
-    public class MachineTimingsController : Controller
+    public class MachineTimingController : Controller
     {
         private PGDatabase db = new PGDatabase();
 
         //
-        // GET: /MachineTimings/
+        // GET: /MachineTiming/
 
         public ActionResult Index()
         {
-            var machinetimings = db.MachineTimings.Include(m => m.Warehouse);
-            return View(machinetimings.ToList());
+            var MachineTiming = db.MachineTiming.Include(m => m.Warehouse);
+            return View(MachineTiming.ToList());
         }
 
         //
-        // GET: /MachineTimings/Details/5
+        // GET: /MachineTiming/Details/5
 
         public ActionResult Details(string id = null)
         {
-            MachineTiming machinetiming = db.MachineTimings.Find(id);
+            MachineTiming machinetiming = db.MachineTiming.Find(id);
             if (machinetiming == null)
             {
                 return HttpNotFound();
@@ -36,7 +36,7 @@ namespace CapstonePG_Project.Controllers
         }
 
         //
-        // GET: /MachineTimings/Create
+        // GET: /MachineTiming/Create
 
         public ActionResult Create()
         {
@@ -45,7 +45,7 @@ namespace CapstonePG_Project.Controllers
         }
 
         //
-        // POST: /MachineTimings/Create
+        // POST: /MachineTiming/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -53,7 +53,7 @@ namespace CapstonePG_Project.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.MachineTimings.Add(machinetiming);
+                db.MachineTiming.Add(machinetiming);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,11 +63,11 @@ namespace CapstonePG_Project.Controllers
         }
 
         //
-        // GET: /MachineTimings/Edit/5
+        // GET: /MachineTiming/Edit/5
 
         public ActionResult Edit(string id = null)
         {
-            MachineTiming machinetiming = db.MachineTimings.Find(id);
+            MachineTiming machinetiming = db.MachineTiming.Find(id);
             if (machinetiming == null)
             {
                 return HttpNotFound();
@@ -77,7 +77,7 @@ namespace CapstonePG_Project.Controllers
         }
 
         //
-        // POST: /MachineTimings/Edit/5
+        // POST: /MachineTiming/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -94,11 +94,11 @@ namespace CapstonePG_Project.Controllers
         }
 
         //
-        // GET: /MachineTimings/Delete/5
+        // GET: /MachineTiming/Delete/5
 
         public ActionResult Delete(string id = null)
         {
-            MachineTiming machinetiming = db.MachineTimings.Find(id);
+            MachineTiming machinetiming = db.MachineTiming.Find(id);
             if (machinetiming == null)
             {
                 return HttpNotFound();
@@ -107,14 +107,14 @@ namespace CapstonePG_Project.Controllers
         }
 
         //
-        // POST: /MachineTimings/Delete/5
+        // POST: /MachineTiming/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            MachineTiming machinetiming = db.MachineTimings.Find(id);
-            db.MachineTimings.Remove(machinetiming);
+            MachineTiming machinetiming = db.MachineTiming.Find(id);
+            db.MachineTiming.Remove(machinetiming);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

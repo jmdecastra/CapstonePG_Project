@@ -26,7 +26,7 @@ namespace CapstonePG_Project.Models
         }
     
         public DbSet<CycleFrequency> CycleFrequencies { get; set; }
-        public DbSet<MachineTiming> MachineTimings { get; set; }
+        public DbSet<MachineTiming> MachineTiming { get; set; }
         public DbSet<ObservationAssignment> ObservationAssignments { get; set; }
         public DbSet<ObservationSheet> ObservationSheets { get; set; }
         public DbSet<ObservationTransaction> ObservationTransactions { get; set; }

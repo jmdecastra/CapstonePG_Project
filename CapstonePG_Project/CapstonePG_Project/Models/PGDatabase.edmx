@@ -277,7 +277,7 @@
       <Schema Namespace="PGDatabaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PGDatabase" p1:LazyLoadingEnabled="true">
           <EntitySet Name="CycleFrequencies" EntityType="PGDatabaseModel.CycleFrequency" />
-          <EntitySet Name="MachineTimings" EntityType="PGDatabaseModel.MachineTiming" />
+          <EntitySet Name="MachineTiming" EntityType="PGDatabaseModel.MachineTiming" />
           <EntitySet Name="ObservationAssignments" EntityType="PGDatabaseModel.ObservationAssignment" />
           <EntitySet Name="ObservationSheets" EntityType="PGDatabaseModel.ObservationSheet" />
           <EntitySet Name="ObservationTransactions" EntityType="PGDatabaseModel.ObservationTransaction" />
@@ -291,7 +291,7 @@
           </AssociationSet>
           <AssociationSet Name="fkwarehhouseID" Association="PGDatabaseModel.fkwarehhouseID">
             <End Role="Warehouse" EntitySet="Warehouses" />
-            <End Role="MachineTiming" EntitySet="MachineTimings" />
+            <End Role="MachineTiming" EntitySet="MachineTiming" />
           </AssociationSet>
           <AssociationSet Name="fkobservationID" Association="PGDatabaseModel.fkobservationID">
             <End Role="ObservationSheet" EntitySet="ObservationSheets" />
@@ -425,7 +425,7 @@
           <Property Name="whBayIDLength" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="whPostIDLength" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="whNamingOrder" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="MachineTimings" Relationship="PGDatabaseModel.fkwarehhouseID" FromRole="Warehouse" ToRole="MachineTiming" />
+          <NavigationProperty Name="MachineTiming" Relationship="PGDatabaseModel.fkwarehhouseID" FromRole="Warehouse" ToRole="MachineTiming" />
           <NavigationProperty Name="ObservationSheets" Relationship="PGDatabaseModel.fkObservationSheetwhID" FromRole="Warehouse" ToRole="ObservationSheet" />
           <NavigationProperty Name="PreferredMethods" Relationship="PGDatabaseModel.fkpreferredMeth" FromRole="Warehouse" ToRole="PreferredMethod" />
           <NavigationProperty Name="WarehouseMethods" Relationship="PGDatabaseModel.fkpreferredMethod" FromRole="Warehouse" ToRole="WarehouseMethod" />
@@ -576,7 +576,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MachineTimings">
+          <EntitySetMapping Name="MachineTiming">
             <EntityTypeMapping TypeName="PGDatabaseModel.MachineTiming">
               <MappingFragment StoreEntitySet="MachineTiming">
                 <ScalarProperty Name="mtID" ColumnName="mtID" />
