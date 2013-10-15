@@ -42,9 +42,9 @@
             @Html.DisplayFor(modelItem => item.prefMethDesc)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {id=item.prefMethID}) |
-            @Html.ActionLink("Details", "Details", new {id=item.prefMethID}) |
-            @Html.ActionLink("Delete", "Delete", new {id=item.prefMethID})
+            @Html.ActionLink("Edit", "Edit", new { id = item.prefMethID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new {id=item.prefMethID}, htmlAttributes: new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new {id=item.prefMethID}, htmlAttributes: new { @class = "btn btn-primary" })
         </td>
     </tr>
 }

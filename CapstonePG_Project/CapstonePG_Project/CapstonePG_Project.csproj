@@ -389,7 +389,7 @@
     <Content Include="Views\MachineTiming\Delete.cshtml" />
     <Content Include="Views\PreferredMethod\Index.cshtml" />
     <Content Include="Views\PreferredMethod\Details.cshtml" />
-    <Content Include="Views\PreferredMethod\Create.cshtml" />
+    <Content Include="Views\PreferredMethod\Create2.cshtml" />
     <Content Include="Views\PreferredMethod\Edit.cshtml" />
     <Content Include="Views\PreferredMethod\Delete.cshtml" />
     <Content Include="Views\PrefMethLine\Index.cshtml" />
@@ -407,6 +407,7 @@
     <Content Include="Views\Toolkit\ChooseToolkit.cshtml" />
     <Content Include="Views\CompleteObservation\Index.cshtml" />
     <Content Include="Views\AllObservations\Index.cshtml" />
+    <Content Include="Views\PreferredMethod\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

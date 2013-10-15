@@ -1,4 +1,7 @@
-﻿@model CapstonePG_Project.Models.Warehouse
+﻿<!-- This is the default landing page. It requires that the user define their client before proceeding
+    to either toolkit. -->
+
+@model CapstonePG_Project.Models.Warehouse
 
 @{
     ViewBag.Title = "Create";
@@ -13,8 +16,6 @@
     @Html.ValidationSummary(true)
 
         <fieldset>
-
-            
             <div class="editor-field">
             <b>Warehouse ID:</b>
             @Html.EditorFor(model => model.whID)
@@ -40,6 +41,3 @@
 }
 
         </div>
-
-<!-- This is the default landing page. It requires that the user define their client before proceeding
-    to either toolkit. -->

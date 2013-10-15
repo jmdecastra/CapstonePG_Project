@@ -44,16 +44,8 @@ namespace CapstonePG_Project.Controllers
             ViewBag.whID = new SelectList(db.Warehouses, "whID", "whName");
 
             string uniqueID = GenerateId();
-            int uniqueIDint;
 
-            bool result = Int32.TryParse(uniqueID, out uniqueIDint);
-            if (true == result)
-                ViewBag.uniqueID = uniqueIDint;
-            else
-                ViewBag.uniqueID = 00000000;
-
-            // ViewBag.uniqueID = Convert.ToInt32(uniqueID);
-            //  int.TryParse(ViewBag.uniqueID, out uniqueID);
+            ViewBag.uniqueID = uniqueID;
 
             return View();
         }
