@@ -10,7 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using CapstonePG_Project.Filters;
 using CapstonePG_Project.Models;
-
+//this is a test to bradleys branch and merging to master
 namespace CapstonePG_Project.Controllers
 {
     [Authorize]
